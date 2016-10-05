@@ -1,0 +1,93 @@
+links:
+  r1,r2:
+    hvac_220:
+      constraints: {e_cap.max: 10000}
+    hvac_380:
+      constraints: {e_cap.max: 12000}
+    hvdc:
+      constraints: {e_cap.max: 5000}
+  r1,r3:
+    hvac_220:
+      constraints: {e_cap.max: 10000}
+    hvac_380:
+      constraints: {e_cap.max: 12000}
+    hvdc:
+      constraints: {e_cap.max: 5000}
+  r1,r4:
+    hvac_220:
+      constraints: {e_cap.max: 10000}
+    hvac_380:
+      constraints: {e_cap.max: 12000}
+    hvdc:
+      constraints: {e_cap.max: 5000}
+  r2,r3:
+    hvac_220:
+      constraints: {e_cap.max: 10000}
+    hvac_380:
+      constraints: {e_cap.max: 12000}
+    hvdc:
+      constraints: {e_cap.max: 5000}
+  r2,r4:
+    hvac_220:
+      constraints: {e_cap.max: 10000}
+    hvac_380:
+      constraints: {e_cap.max: 12000}
+    hvdc:
+      constraints: {e_cap.max: 5000}
+  r3,r4:
+    hvac_220:
+      constraints: {e_cap.max: 10000}
+    hvac_380:
+      constraints: {e_cap.max: 12000}
+    hvdc:
+      constraints: {e_cap.max: 5000}
+locations:
+  csp1:
+    level: 1
+    techs: [csp]
+    override:
+      csp:
+        constraints: {e_cap.max: 10000}
+    within: r1
+  csp2:
+    level: 1
+    techs: [csp]
+    override:
+      csp:
+        constraints: {e_cap.max: 10000}
+    within: r1
+  csp3:
+    level: 1
+    techs: [csp]
+    override:
+      csp:
+        constraints: {e_cap.max: 10000}
+    within: r1
+  r1:
+    override:
+      ccgt:
+        constraints: {e_cap.max: 30000}
+      demand_power:
+        constraints: {r: file=demand-1.csv, r_scale_to_peak: -40000}
+        x_map: 'r1: demand'
+    techs: [demand_power, unmet_demand_power, ccgt]
+  r2:
+    override:
+      demand_power:
+        constraints: {r: file=demand-2.csv, r_scale_to_peak: -5000}
+        x_map: 'r2: demand'
+    techs: [demand_power, unmet_demand_power]
+  r3:
+    override:
+      demand_power:
+        constraints: {r: file=demand-3.csv, r_scale_to_peak: -5000}
+        x_map: 'r3: demand'
+    techs: [demand_power, unmet_demand_power]
+  r4:
+    override:
+      ccgt:
+        constraints: {e_cap.max: 40000}
+      demand_power:
+        constraints: {r: file=demand-4.csv, r_scale_to_peak: -30000}
+        x_map: 'r4: demand'
+    techs: [demand_power, unmet_demand_power, ccgt]

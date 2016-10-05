@@ -1,0 +1,35 @@
+debug: {keep_temp_files: false, symbolic_solver_labels: false}
+mode: plan
+model: model_config/model.yaml
+name: Test run
+output: {format: hdf, path: /home/thormeyc/polybox/pycharm/Test_wiese_01/example_model/example-model/Output}
+override: null
+parallel:
+  environment: bsub
+  iterations:
+  - {'override.links.r2,r4.hvac_380.constraints.e_cap.max:': 0}
+  - {'override.links.r2,r4.hvac_220.constraints.e_cap.max:': 0}
+  - {'override.links.r2,r4.hvdc.constraints.e_cap.max:': 0}
+  - {'override.links.r1,r3.hvac_380.constraints.e_cap.max:': 0}
+  - {'override.links.r1,r3.hvac_220.constraints.e_cap.max:': 0}
+  - {'override.links.r1,r3.hvdc.constraints.e_cap.max:': 0}
+  - {'override.links.r1,r2.hvac_380.constraints.e_cap.max:': 0}
+  - {'override.links.r1,r2.hvac_220.constraints.e_cap.max:': 0}
+  - {'override.links.r1,r2.hvdc.constraints.e_cap.max:': 0}
+  - {'override.links.r2,r3.hvac_380.constraints.e_cap.max:': 0}
+  - {'override.links.r2,r3.hvac_220.constraints.e_cap.max:': 0}
+  - {'override.links.r2,r3.hvdc.constraints.e_cap.max:': 0}
+  - {'override.links.r3,r4.hvac_380.constraints.e_cap.max:': 0}
+  - {'override.links.r3,r4.hvac_220.constraints.e_cap.max:': 0}
+  - {'override.links.r3,r4.hvdc.constraints.e_cap.max:': 0}
+  - {'override.links.r1,r4.hvac_380.constraints.e_cap.max:': 0}
+  - {'override.links.r1,r4.hvac_220.constraints.e_cap.max:': 0}
+  - {'override.links.r1,r4.hvdc.constraints.e_cap.max:': 0}
+  name: example-model
+  post_run: null
+  pre_run: null
+  resources: {memory: null, threads: null, wall_time: null}
+solver: gurobi
+subset_t: ['2005-01-01', '2005-01-05']
+subset_x: []
+subset_y: []
