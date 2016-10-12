@@ -5,6 +5,10 @@
 * `functions.py`: import all functions to run.py
 * `run.py`: run the extension with respective options/flags
 
+## Documentation
+
+See [manual.rst](manual.rst).
+
 ## License
 
 Copyright 2016 Christoph Thormeyer
